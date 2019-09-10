@@ -10,4 +10,14 @@ describe('spaceless tag', () => {
 
     expect(result).toEqual('<ul><li>Test</li></ul>');
   });
+  
+  it('allows block tags inside', () => {
+    const result = djanjucks.renderString(`{% spaceless %}
+{% block example %}
+  <span>Default block content</span>
+{% endblock %}
+{% endspaceless %}`);
+    
+    expect(result).toEqual('<span>Default block content</span>');
+  });
 });
